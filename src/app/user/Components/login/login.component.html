@@ -1,0 +1,37 @@
+
+<div class="coverImage">
+  <div class="form ">
+    <div class="log-image">
+      <img src="assets/Images/logo.png" width="100%" alt="" srcset="">
+    </div>
+    <form [formGroup]="loginForm">
+
+      <div class="mb-3">
+        <input type="Email" class="form-control" id="email" name="Email" formControlName="Email" placeholder="الإيميل"
+        [ngClass]="{'is-invalid':((loginForm.get('Email')?.touched) || loginForm.get('Email')?.touched) && !loginForm.get('Email')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="loginForm.get('Email')?.errors?.['required']">
+            Please Enter an Email
+          </span>
+      </span>
+
+      <div class="mb-3">
+        <input type="Password" class="form-control" id="password" name="Password" formControlName="Password" placeholder="كلمة السر"
+        [ngClass]="{'is-invalid':((loginForm.get('Password')?.touched) || loginForm.get('Password')?.touched) && !loginForm.get('Password')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">
+            Please Enter Valid Password
+          </span>
+      </span>
+
+       <div class="mb-3">
+          <button type="submit" class="form-control btnSubmit" [disabled]="loginForm.invalid" (click)="loginComponent()"> تسجيل </button>
+      </div>
+    </form>
+    <div class="mb-3 togelText">هل لديك حساب بالفعل ؟
+      <a href='user/register'>تسجيل الدخول</a>
+      </div>
+  </div>
+</div>

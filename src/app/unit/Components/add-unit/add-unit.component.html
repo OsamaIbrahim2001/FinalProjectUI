@@ -1,0 +1,224 @@
+<div class="container containerForm">
+
+    <form [formGroup]="unitForm">
+      <div class="mb-3">
+        <label for="dropdown">تصنيف الوحدة</label>
+        <select formControlName="CategoryId" id="CategoryId" class="form-control" (change)="selectCategory($event)">
+          <option value="">التصنيف</option>
+          <option *ngFor="let option of Category" [value]="option.id">{{ option.name }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3" *ngIf="showFloor">
+        <input type="number" class="form-control" id="FloorNumber" name="FloorNumber" formControlName="FloorNumber" placeholder="الدور الكام"
+        [ngClass]="{'is-invalid':((unitForm.get('FloorNumber')?.touched) || unitForm.get('FloorNumber')?.touched) && !unitForm.get('FloorNumber')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('FloorNumber')?.errors?.['required']">
+            الشقة الدور الكام
+          </span>
+      </span>
+
+      <div class="mb-3">
+        <input type="text" class="form-control" id="Name" name="Name" formControlName="Name" placeholder="اسم الوحده"
+        [ngClass]="{'is-invalid':((unitForm.get('Name')?.touched) || unitForm.get('Name')?.touched) && !unitForm.get('Name')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+        <span *ngIf="unitForm.get('Name')?.errors?.['required']">
+          <h1>Please Enter the Name</h1>
+        </span>
+      </span>
+
+
+      <div class="mb-3">
+        <label for="dropdown">قم باخيار المحافظة</label>
+        <select formControlName="Governamnet" id="CategoryId" class="form-control" (change)="onGovernorateChange($event)">
+          <option value="">المحافظة</option>
+          <option *ngFor="let item of jsonData" [value]="item.governorate_name_ar">{{ item.governorate_name_ar }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="City">اختر المدينة</label>
+        <select formControlName="City" id="City" class="form-control">
+          <option value="">المدينة</option>
+          <option *ngFor="let city of cities" [value]="city.city_name_ar">{{ city.city_name_ar }}</option>        </select>
+      </div>
+
+      <div class="mb-3">
+        <input type="text" class="form-control" id="address" name="Address" formControlName="Address" placeholder="العنوان"
+        [ngClass]="{'is-invalid':((unitForm.get('Address')?.touched) || unitForm.get('Address')?.touched) && !unitForm.get('Address')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('Address')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+      <div class="mb-3">
+        <input type="text" class="form-control" id="Location" name="Location" formControlName="Location" placeholder="الموقع"
+        [ngClass]="{'is-invalid':((unitForm.get('Location')?.touched) || unitForm.get('Location')?.touched) && !unitForm.get('Location')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('Location')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+      <div class="mb-3">
+        <input type="number" class="form-control" id="Area" name="Area" formControlName="Area" placeholder="المساحة"
+        [ngClass]="{'is-invalid':((unitForm.get('Area')?.touched) || unitForm.get('Area')?.touched) && !unitForm.get('Area')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('Area')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+
+      <div class="mb-3">
+        <input type="number" class="form-control" id="CapacityRoom" name="CapacityRoom" formControlName="CapacityRoom" placeholder="عدد الغرف"
+        [ngClass]="{'is-invalid':((unitForm.get('CapacityRoom')?.touched) || unitForm.get('CapacityRoom')?.touched) && !unitForm.get('CapacityRoom')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('CapacityRoom')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+      <div class="mb-3">
+        <input type="number" class="form-control" id="CapacityBathRoom" name="CapacityBathRoom" formControlName="CapacityBathRoom" placeholder="عدد الحمامات"
+        [ngClass]="{'is-invalid':((unitForm.get('CapacityBathRoom')?.touched) || unitForm.get('CapacityBathRoom')?.touched) && !unitForm.get('CapacityBathRoom')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('CapacityBathRoom')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+      <div class="mb-3">
+        <input type="number" class="form-control" id="Price" name="Price" formControlName="Price" placeholder="السعر"
+        [ngClass]="{'is-invalid':((unitForm.get('Price')?.touched) || unitForm.get('Price')?.touched) && !unitForm.get('Price')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('Price')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+
+      <div class="mb-3">
+        <label for="PriceType">نوع السعر</label>
+        <select formControlName="PriceType" id="PriceType" class="form-control" (change)="toggilePrice($event)">
+          <option *ngFor="let item of PriceType" [value]="item">{{ item==0?'ثابت':'مزاد' }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3" *ngIf="isShowPrice">
+        <input type="number" class="form-control" id="MinPrice" name="MinPrice" formControlName="MinPrice" placeholder="اقل سعر"
+        [ngClass]="{'is-invalid':((unitForm.get('MinPrice')?.touched) || unitForm.get('MinPrice')?.touched) && !unitForm.get('MinPrice')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('MinPrice')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+      <div class="mb-3" *ngIf="isShowPrice">
+        <input type="number" class="form-control" id="MaxPrice" name="MaxPrice" formControlName="MaxPrice" placeholder="أعلي سعر"
+        [ngClass]="{'is-invalid':((unitForm.get('MaxPrice')?.touched) || unitForm.get('MaxPrice')?.touched) && !unitForm.get('MaxPrice')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('MaxPrice')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+      <div class="mb-3">
+        <textarea type="text" class="form-control" id="Description" name="Description" formControlName="Description" placeholder="الوصف"
+        [ngClass]="{'is-invalid':((unitForm.get('Description')?.touched) || unitForm.get('Description')?.touched) && !unitForm.get('Description')?.valid}">
+        </textarea>
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('Description')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+
+      <div class="mb-3">
+        <label for="CoverImage">الصورة الرئيسية للوحدة</label>
+        <input type="file" class="form-control" (change)="selectCoverImage($event)" id="CoverImage" name="CoverImage" formControlName="CoverImage" placeholder="الصورة الرئيسية للوحدة"
+        [ngClass]="{'is-invalid':((unitForm.get('CoverImage')?.touched) || unitForm.get('CoverImage')?.touched) && !unitForm.get('CoverImage')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('CoverImage')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+      <div class="mt-2 mb-3" *ngIf="CoverImageURL">
+        <div class="row">
+          <mat-grid-list cols="2" rowHeight="1.5:1">
+            <mat-grid-tile >
+              <div style="position: relative;">
+                <span class="btn-remove-image" >x</span>
+              <img [src]="CoverImageURL" alt="" width="100%" height="100%">
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="UnitImagesFile">صور الوحدة </label>
+        <input type="file" [multiple]="5" (change)="selectUnitImages($event)" class="form-control" id="UnitImagesFile" name="UnitImagesFile" formControlName="UnitImagesFile" placeholder="صور الوحدة"
+        [ngClass]="{'is-invalid':((unitForm.get('UnitImagesFile')?.touched) || unitForm.get('UnitImagesFile')?.touched) && !unitForm.get('UnitImagesFile')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('UnitImagesFile')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+      <div class="mt-2 mb-3" *ngIf="UnitImageURL">
+        <div class="row">
+          <mat-grid-list cols="4" rowHeight="1:1">
+            <mat-grid-tile *ngFor="let item of UnitImageURL;let i=index;">
+              <div style="position: relative;">
+                <span class="btn-remove-image" (click)="removeUnitImages(i)">x</span>
+              <img [src]="item" alt="" width="100%" height="100%">
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="UnitConcreteImagesFile">صور اصول الوحدة والعقود</label>
+        <input type="file" multiple class="form-control" (change)="selectUnitImagesContracs($event)" id="UnitConcreteImagesFile" name="UnitConcreteImagesFile" formControlName="UnitConcreteImagesFile" placeholder="صور اصول الوحدة والعقود"
+        [ngClass]="{'is-invalid':((unitForm.get('UnitConcreteImagesFile')?.touched) || unitForm.get('UnitConcreteImagesFile')?.touched) && !unitForm.get('UnitConcreteImagesFile')?.valid}">
+      </div>
+      <span class="invalid-feedback">
+          <span *ngIf="unitForm.get('UnitConcreteImagesFile')?.errors?.['required']">
+            Please Enter the Salary
+          </span>
+      </span>
+      <div class="mt-2 mb-3" *ngIf="UnitImageConractURL">
+        <div class="row">
+          <mat-grid-list cols="4" rowHeight="1:1">
+            <mat-grid-tile *ngFor="let item of UnitImageConractURL;let i=index;">
+              <div style="position: relative;">
+                <span class="btn-remove-image" (click)="removeUnitImagesContracs(i)">x</span>
+              <img [src]="item" alt="" width="100%" height="100%">
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </div>
+
+       <div class="mb-3">
+          <button type="submit" (click)="AddUnitComponent()" class="form-control btnSubmit" [disabled]="unitForm.invalid"> تسجيل </button>
+      </div>
+    </form>
+  </div>
+
+      <router-outlet></router-outlet>
+
