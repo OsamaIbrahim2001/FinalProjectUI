@@ -17,6 +17,8 @@ return this.http.get<Offer[]>(this.baseUrl+"/"+localStorage.getItem('token'));
   }
 
   addOffer(offer:Offer){
+    console.log("on Offer Added" , offer)
+
     return this.http.post<Offer>(this.baseUrl,offer);
   }
 }

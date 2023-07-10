@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CategoryComponent } from './Component/home-page/category/category.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CityComponent } from './Component/home-page/city/city.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CityComponent } from './Component/home-page/city/city.component';
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
