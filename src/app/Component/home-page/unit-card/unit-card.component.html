@@ -1,5 +1,5 @@
 <div class="container" style="text-align: start;">
-  <div class="h2 container-fluiid me-5 mb-3" style="text-align: start; font-weight: 900;">أحدث الوحدات</div>
+  <h2 style=" font-weight: bolder; text-align: start;">أحدث الوحدات</h2>
   <div class="card" style="width: 18rem; display: inline-flex;" *ngFor="let unit of unitCard | paginate :{itemsPerPage:itemsPerPageCard,currentPage:pCard}">
 
     <img class="card-img-top" height="200px" [src]="unit.coverImageString" alt="Card image cap">

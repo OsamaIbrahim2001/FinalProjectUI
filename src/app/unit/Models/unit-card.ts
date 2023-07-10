@@ -7,7 +7,7 @@ export interface UnitCard {
     governamnet:string
     city :string
     location :string
-   unitType: UnitType
+    unitType: UnitType
     price:number
     capacityRoom :number,
     capacityBathRoom :number,

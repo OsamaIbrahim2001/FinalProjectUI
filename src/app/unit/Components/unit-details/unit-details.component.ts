@@ -47,8 +47,7 @@ unitID:any;
 
     selectedImage: String = '';
     constructor(private unitservice: UnitService,private route: ActivatedRoute,
-       private offerservice : OffersService,
-    ) {}
+       private offerservice : OffersService){}
 
     ngOnInit(): void {
 
@@ -86,10 +85,9 @@ unitID:any;
 
      token:string|null = localStorage.getItem('token');
 
-     addOfferComponent() {
-      // const token = localStorage.getItem('token');
+  addOfferComponent() {
 
-      if (this.token) {
+          if (this.token) {
         this.addedOffer.buyerID = this.token;
       }
       this.addedOffer.ownerID = this.unitDetails.ownerID
