@@ -10,6 +10,7 @@
       </div>
 
       <div class="mb-3" *ngIf="showFloor">
+        <label for="FloorNumber">الدور الكام</label>
         <input type="number" class="form-control" id="FloorNumber" name="FloorNumber" formControlName="FloorNumber" placeholder="الدور الكام"
         [ngClass]="{'is-invalid':((unitForm.get('FloorNumber')?.touched) || unitForm.get('FloorNumber')?.touched) && !unitForm.get('FloorNumber')?.valid}">
       </div>
@@ -115,6 +116,7 @@
       </div>
 
       <div class="mb-3" *ngIf="isShowPrice">
+        <label for="MinPrice">أقل السعر</label>
         <input type="number" class="form-control" id="MinPrice" name="MinPrice" formControlName="MinPrice" placeholder="اقل سعر"
         [ngClass]="{'is-invalid':((unitForm.get('MinPrice')?.touched) || unitForm.get('MinPrice')?.touched) && !unitForm.get('MinPrice')?.valid}">
       </div>
@@ -125,6 +127,7 @@
       </span>
 
       <div class="mb-3" *ngIf="isShowPrice">
+        <label for="MaxPrice">أعلي السعر</label>
         <input type="number" class="form-control" id="MaxPrice" name="MaxPrice" formControlName="MaxPrice" placeholder="أعلي سعر"
         [ngClass]="{'is-invalid':((unitForm.get('MaxPrice')?.touched) || unitForm.get('MaxPrice')?.touched) && !unitForm.get('MaxPrice')?.valid}">
       </div>

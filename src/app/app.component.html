@@ -18,8 +18,9 @@
         <!-- <li> -->
     <span class="first">
       <a (click)="registerClick()" *ngIf="!userName">
-        <span class="ms-2" style="font-weight: 800;">تسجيل الدخول</span>
         <i class="fa fa-user"></i>
+        <span class="ms-2" style="font-weight: 800;">تسجيل الدخول</span>
+
       </a>
 
     <a (click)="registerClick()" *ngIf="userName">
@@ -38,7 +39,7 @@
         <a ><i class="fa fa-envelope text-warning"  (click)="clickHere()" (mouseleave)="closeChat()"></i></a>
       <!-- </li> -->
         <!-- <li> -->
-          <a ><i class="fa fa-ticket"></i></a>
+          <a href="offer/offers"><i class="fa fa-ticket"></i></a>
 
           <!-- </li>  -->
         <!-- <li> -->

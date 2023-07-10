@@ -2,6 +2,7 @@ import { TypePrice } from "./type-price"
 import { UnitType } from "./unit-type"
 
 export interface UnitDetails {
+  ownerID:string
   id?:number
   name: string,
   area :number

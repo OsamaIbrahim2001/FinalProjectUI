@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UnitDetails } from '../../Models/unit-details';
 import { UnitService } from '../../Services/unit.service';
 import { ActivatedRoute } from '@angular/router';
+import { Offer } from 'src/app/offers/Models/offer';
+import { OffersService } from 'src/app/offers/Services/offers.service';
 
 @Component({
   selector: 'app-unit-details',
@@ -11,18 +13,19 @@ import { ActivatedRoute } from '@angular/router';
 export class UnitDetailsComponent implements OnInit{
 
     ////////// For Offer ///////////////
-  //   addedOffer: Offer = {
-  //     id: 0,
-  //     message: '',
-  //     price: 0,
-  //     unitBuildingID: 0,
-  //     buyerID: '',
-  //     ownerID: '',
-  // }
+    addedOffer: Offer = {
+      id: 0,
+      message: '',
+      price: 0,
+      unitBuildingID: 0,
+      buyerID: '',
+      ownerID: '',
+  }
 
 
-
+unitID:any;
     unitDetails: UnitDetails = {
+      ownerID:'',
       name: '',
       description: '',
       floorNumber: 0,
@@ -44,22 +47,23 @@ export class UnitDetailsComponent implements OnInit{
 
     selectedImage: String = '';
     constructor(private unitservice: UnitService,private route: ActivatedRoute,
-      // private offerservice : OfferService,
+       private offerservice : OffersService,
     ) {}
 
     ngOnInit(): void {
+
       console.log("On Init **************");
 
       this.route.paramMap.subscribe((params) => {
 
-        const id = params.get('id')!;
-        console.log("===== id ===",id);
+        this.unitID = params.get('id')!;
+        console.log("===== id ===",this.unitID);
 
         // if (id) {
         //   this.addedOffer.unitBuildingID = Number(id);
         // }
 
-        this.unitservice.getUnitDetails(id).subscribe({
+        this.unitservice.getUnitDetails(this.unitID).subscribe({
           next: (response) => {
 
             this.unitDetails = response;
@@ -73,6 +77,7 @@ export class UnitDetailsComponent implements OnInit{
           }
         });
       });
+
     }
 
     selectImage(index: number) {
@@ -81,6 +86,24 @@ export class UnitDetailsComponent implements OnInit{
 
      token:string|null = localStorage.getItem('token');
 
+     addOfferComponent() {
+      // const token = localStorage.getItem('token');
+
+      if (this.token) {
+        this.addedOffer.buyerID = this.token;
+      }
+      this.addedOffer.ownerID = this.unitDetails.ownerID
+      this.addedOffer.unitBuildingID=this.unitID;
+
+      this.offerservice.addOffer(this.addedOffer).subscribe({
+        next: (value) => {
+          alert("Added offer"),
+          this.addedOffer.message = '';
+          this.addedOffer.price = 0;
+        },
+        error: (err) => console.log(err)
+      })
+    }
 
     ////////// For Offers///////////////
     // addOfferComponent() {
