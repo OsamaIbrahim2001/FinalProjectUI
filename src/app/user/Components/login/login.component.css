@@ -44,3 +44,7 @@ font-weight: bold;
 .btnSubmit:disabled{
 opacity: 70%;
   }
+
+  .invalid-feedback{
+    color: white;
+  }
