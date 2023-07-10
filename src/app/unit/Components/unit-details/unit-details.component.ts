@@ -105,6 +105,7 @@ unitID:any;
       })
     }
 
+
     ////////// For Offers///////////////
     // addOfferComponent() {
     //   // const token = localStorage.getItem('token');
