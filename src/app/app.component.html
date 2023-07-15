@@ -1,10 +1,14 @@
-
+<!--
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="text-align: right;">
+
+
+
+
+    <a class="navbar-brand" href="#" style="text-align: right;" (click)="showFooter()">
       <img src="../assets/Images/logo.png" alt="" height="7%" width="5%" class="d-inline-block align-text-top">
       <span>سكني</span>
-    </a>
+    </a> -->
 
     <!-- <div class="navBarSearch">
       <form class="d-flex">
@@ -13,43 +17,41 @@
       </form>
     </div> -->
 
-    <div class="navBarSearch1" dir="ltr">
+    <!-- <div class="navBarSearch1" dir="ltr"> -->
       <!-- <ul> -->
         <!-- <li> -->
-    <span class="first">
-      <a (click)="registerClick()" *ngIf="!userName">
+    <!-- <span class="first">
+      <a (click)="registerClick()" *ngIf="!userName" (click)="showFooter()">
         <i class="fa fa-user"></i>
         <span class="ms-2" style="font-weight: 800;">تسجيل الدخول</span>
-
       </a>
 
-    <a (click)="registerClick()" *ngIf="userName">
+    <a (click)="registerClick()" *ngIf="userName" (click)="showFooter()">
       <i class="fa fa-user" *ngIf="!personalPhoto"></i>
     <img [src]="personalPhoto" width="25px" height="25px" style="border-radius: 50%;" alt="" srcset="" *ngIf="personalPhoto">
     <span class="ms-2">{{userName}}</span>
     </a>
-    </span>
+    </span> -->
       <!-- </li> -->
 
 
         <!-- <li> -->
-          <a href="#"><i class="fa fa-bell"></i></a>
+          <!-- <a href="#" onclick="showFooter()"><i class="fa fa-bell"></i></a> -->
         <!-- </li> -->
         <!-- <li -->
-        <a ><i class="fa fa-envelope text-warning"  (click)="clickHere()" (mouseleave)="closeChat()"></i></a>
+        <!-- <a (click)="toChat()" ><i class="fa fa-envelope text-warning"></i></a> -->
       <!-- </li> -->
         <!-- <li> -->
-          <a href="offer/offers"><i class="fa fa-ticket"></i></a>
+          <!-- <a href="offer/offers" (click)="showFooter()"><i class="fa fa-ticket"></i></a> -->
 
           <!-- </li>  -->
         <!-- <li> -->
-          <a href="#"><i class="fa fa-heart"></i></a>
+          <!-- <a href="#" (click)="showFooter()"><i class="fa fa-heart"></i></a> -->
         <!-- </li> -->
         <!-- <li> -->
-          <a (click)="toAddUnit()"><i class="fa fa-plus"></i></a>
         <!-- </li> -->
       <!-- </ul> -->
-    </div>
+    <!-- </div>
   </div>
 
 
@@ -58,9 +60,11 @@
 <div class="chat" *ngIf="showChat">
  Helllo
 </div>
+
+
 <router-outlet></router-outlet>
 
-<footer dir="ltr" class="container-fluid" style="background-color: black; color: white; text-align: end;">
+<footer *ngIf="isShowFooter" dir="ltr" class="container-fluid" style="background-color: black; color: white; text-align: end;">
   <div class="container">
     <br>
     <h2>
@@ -107,4 +111,8 @@
 
   </div>
   <br>
-</footer>
+</footer> -->
+
+<mat-dialog-actions>
+  <button mat-raised-button color="" (click)="openDialog()">Open Dialog</button>
+</mat-dialog-actions>

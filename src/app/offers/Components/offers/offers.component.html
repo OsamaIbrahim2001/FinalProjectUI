@@ -6,14 +6,13 @@
 
 <div class="alert" role="alert"  *ngFor="let offer of offers">
   <p>
-    لقد أرسل لك {{ offer.buyerID }} : <br>
+    لقد أرسل لك {{ offer.buyerName }} : <br>
     الرسالة : {{ offer.message }} <br>
     السعر : {{ offer.price }}
   </p>
   <div>
     <span>
-      <button type="button" class="btn btn-success" (click)="startChat(offer)
-      ">Ok</button>
+      <button type="button" class="btn btn-success" (click)="AddUserToFirebaseComponenet(offer)">Ok</button>
     </span>
     <span>
       <button type="button" class="btn btn-danger" (click)="deleteOffer(offer.id)"

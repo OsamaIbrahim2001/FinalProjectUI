@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatGridList, MatGridListModule, MatGridTile } from '@angular/material/grid-list';
 import { SelectDurationComponent } from './Components/add-unit/select-duration/select-duration.component';
 import { UnitDetailsComponent } from './Components/unit-details/unit-details.component';
+import { AppModule } from '../app.module';
 
 
 const routes:Routes=[
@@ -39,6 +40,7 @@ const routes:Routes=[
      MatFormFieldModule,
       MatInputModule, FormsModule,
        MatButtonModule,
+       AppModule,
     RouterModule.forChild(routes)
   ]
 })

@@ -13,15 +13,23 @@ import { CategoryComponent } from './Component/home-page/category/category.compo
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CityComponent } from './Component/home-page/city/city.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AngularFireModule} from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
+  exports:[UnitCardComponent],
   declarations: [
     AppComponent,
     HomePageComponent,
     UnitCardComponent,
     CategoryComponent,
-    CityComponent
+    CityComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +38,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
     NgxPaginationModule,
-    BrowserAnimationsModule
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+   AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]

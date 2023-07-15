@@ -8,6 +8,7 @@ const routes: Routes = [
   { path:'user', loadChildren:()=>import('src/app/user/user.module').then((m)=>m.UserModule)},
   { path:'unit', loadChildren:()=>import('src/app/unit/unit.module').then((m)=>m.UnitModule)},
   { path:'offer', loadChildren:()=>import('src/app/offers/offers.module').then((m)=>m.OffersModule)},
+  { path:'chat', loadChildren:()=>import('src/app/chat/chat.module').then((m)=>m.ChatModule)},
   {path : '**' , component : HomePageComponent},
 ];
 
